@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Record</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-md">
+        <a class="navbar-brand" href="#" style="color: white;">Database Course</a>
+    </div>
+</nav>
+
+<div class="my-form-container">
+    <div class="container">
+        <ul class="nav nav-pills justify-content-left" style="margin-bottom: 2em;">
+            <li class="nav-item">
+                <a class="btn btn-outline-dark" th:href="@{/country}">Countries</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-dark" th:href="@{/user}">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-dark" th:href="@{/doctor}">Doctors</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-dark" th:href="@{/public-servant}">Public servants</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-dark" th:href="@{/disease-type}">Disease types</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-dark" th:href="@{/disease}">Diseases</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-secondary" th:href="@{/record}">Records</a>
+            </li>
+        </ul>
+        <hr>
+
+        <form method="POST" th:action="@{/record/save}" th:object="${record}">
+            <fieldset>
+                <legend>Edit Record</legend>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" th:field="*{recordId.user.email}" id="email" class="form-control" placeholder="user@gmail.com" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="cname" class="form-label">Email</label>
+                    <input type="text" th:field="*{recordId.country.cname}" id="cname" class="form-control" placeholder="Kazakhstan" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="diseaseCode" class="form-label">Disease Code</label>
+                    <input type="text" th:field="*{recordId.disease.code}" id="diseaseCode" class="form-control" placeholder="covid-19" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="totalDeaths" class="form-label">Total Deaths</label>
+                    <input type="number" th:field="*{totalDeaths}" id="totalDeaths" class="form-control" placeholder="1000">
+                </div>
+                <div class="mb-3">
+                    <label for="totalPatients" class="form-label">Total Patients</label>
+                    <input type="number" th:field="*{totalPatients}" id="totalPatients" class="form-control" placeholder="20000">
+                </div>
+
+                <button type="submit" class="btn btn-dark">Apply</button>
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
